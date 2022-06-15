@@ -2,8 +2,7 @@
 # import json
 # from requests.auth import HTTPBasicAuth
 #
-# # Air Force Station Suratgarh / Coordinates : 29.3867° N, 73.9031° E
-# # 29.3867° N, 73.9031° E
+# # Air Force Station Suratgarh / Coordinates : 29.3867 N, 73.9031 E
 #
 # lat = 29.3867
 # lon = 73.9031
