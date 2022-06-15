@@ -1,33 +1,3 @@
-# import requests
-# import json
-# from requests.auth import HTTPBasicAuth
-#
-# # Air Force Station Suratgarh / Coordinates : 29.3867 N, 73.9031 E
-#
-# lat = 29.3867
-# lon = 73.9031
-# api_key = 'de39c02a0818896ce4fc9c7c6d56326c'
-#
-# api_token = 'de39c02a0818896ce4fc9c7c6d56326c'
-# api_url_base = 'https://api.openweathermap.org/data/3.0/onecall'
-#
-# url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&appid={api_key}"
-# print(url)
-#
-# # auth = HTTPBasicAuth(apiKey, secret)
-# # auth = HTTPBasicAuth('apikey', API_key)
-# # headers = {'Accept': 'application/json'}
-# # my_headers = {'Authorization' : 'Bearer de39c02a0818896ce4fc9c7c6d56326c'}
-#
-# ...
-# headers = {'Content-Type': 'application/json',
-#            'Authorization': 'Bearer {0}'.format(api_token)}
-# api_url = '{0}'.format(api_url_base)
-# response = requests.get(api_url, headers=headers)
-# print(response
-#       )
-# # response = requests.get(url, headers=my_headers)
-# # print(response)
 
 ########################################################################################################################
 import requests, json
