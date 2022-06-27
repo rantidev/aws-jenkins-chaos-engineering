@@ -50,7 +50,6 @@ kubectl logs subscriber-cd959f546-mwvp2 -n litmus
 kubectl delete all --all
 kubectl delete all --all -n litmus
 
-
 kubectl get nodes -o yaml | grep pods 
 //The command shows the pod count, that can be allocated to each nodes
 
