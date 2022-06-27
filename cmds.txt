@@ -1,19 +1,21 @@
-Sample IAM role
+//Sample IAM role
 arn:aws:iam::669989449580:role/eksClusterRole2
 arn:aws:iam::669989449580:role/eksWorkerRole2
 
-Describe configmap
+//Describe configmap
 kubectl describe configmap -n kube-system aws-auth
 
 aws eks describe-cluster --name c2
 
-Get Role configuration
+//Get Role configuration
 eksctl get iamidentitymapping --cluster c2 --region=us-east-1
 
-Config aws with newly created eks cluster 
+//Config aws with newly created eks cluster 
 aws eks --region us-east-1 update-kubeconfig --name c2
 
-Create sample nginx deployment with 3 replicas 
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+//Create sample nginx deployment with 3 replicas 
 kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
 
 kubectl get pods -l app=nginx
@@ -22,31 +24,49 @@ kubectl describe pod <pod-name>
 
 kubectl delete deployment nginx-deployment
 
-Install litmus chaos with kubectl
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+//Install litmus chaos with kubectl
 kubectl apply -f https://litmuschaos.github.io/litmus/2.0.0/litmus-2.0.0.yaml
+kubectl apply -f https://raw.githubusercontent.com/litmuschaos/litmus/2.10.0/mkdocs/docs/2.10.0/litmus-2.10.0.yaml
+
+//in namespace
+kubectl apply -f https://raw.githubusercontent.com/litmuschaos/litmus/master/litmus-portal/manifests/cluster-k8s-manifest.yml
 
 kubectl get pods -n litmus
 
 kubectl get svc -n litmus
 
+//patch loadbalancer
+kubectl patch svc litmusportal-frontend-service -p '{"spec": {"type": "LoadBalancer"}}' -n litmus
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+//delete everything
+kubectl delete all --all
+kubectl delete all --all -n litmus
+
+
 kubectl get nodes -o yaml | grep pods 
-The command shows the pod count, that can be allocated to each nodes
+//The command shows the pod count, that can be allocated to each nodes
 
 kubectl get pods --all-namespaces | grep Running | wc -l
-How many are running?
+//How many are running?
  
 kubectl describe node <node-name> | grep -i capacity -A 13
-Max capacity of pods 
+//Max capacity of pods 
 
-Calculate max no. of pods
+//Calculate max no. of pods
 curl -o max-pods-calculator.sh https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
 chmod +x max-pods-calculator.sh
 ./max-pods-calculator.sh --instance-type m5.large --cni-version 1.9.0-eksbuild.1
 
-install plugins on jenkins and add Credentials for dockerhub 
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+//install plugins on jenkins and add Credentials for dockerhub 
 
 add this text while creating Credentials for Kubernetes Cluster
-sudo cat ~/.kube/config
+//sudo cat ~/.kube/config
 
-set a clusterrole as cluster-admin (one time only on ec2 instance)
+//set a clusterrole as cluster-admin (one time only on ec2 instance)
 kubectl create clusterrolebinding cluster-system-anonymous --clusterrole=cluster-admin --user=system:anonymous
