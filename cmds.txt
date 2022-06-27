@@ -28,6 +28,7 @@ kubectl delete deployment nginx-deployment
 
 //Install litmus chaos with kubectl
 kubectl apply -f https://litmuschaos.github.io/litmus/2.0.0/litmus-2.0.0.yaml
+kubectl apply -f https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/2.9.0/litmus-2.9.0.yaml
 kubectl apply -f https://raw.githubusercontent.com/litmuschaos/litmus/2.10.0/mkdocs/docs/2.10.0/litmus-2.10.0.yaml
 
 //in namespace
@@ -39,6 +40,9 @@ kubectl get svc -n litmus
 
 //patch loadbalancer
 kubectl patch svc litmusportal-frontend-service -p '{"spec": {"type": "LoadBalancer"}}' -n litmus
+
+//Troubleshooting
+kubectl logs subscriber-cd959f546-mwvp2 -n litmus
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -62,6 +66,8 @@ chmod +x max-pods-calculator.sh
 ./max-pods-calculator.sh --instance-type m5.large --cni-version 1.9.0-eksbuild.1
 
 -------------------------------------------------------------------------------------------------------------------------------------------
+
+git clone https://github.com/imkaran23/aws-jenkins-CI-CD.git
 
 //install plugins on jenkins and add Credentials for dockerhub 
 
