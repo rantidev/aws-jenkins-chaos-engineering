@@ -11,7 +11,7 @@ aws eks describe-cluster --name c2
 eksctl get iamidentitymapping --cluster c2 --region=us-east-1
 
 //Config aws with newly created eks cluster 
-aws eks --region us-east-1 update-kubeconfig --name litmus1
+aws eks --region us-east-1 update-kubeconfig --name c2new
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ kubectl delete deployment nginx-deployment
 
 //Install litmus chaos with kubectl
 kubectl apply -f https://litmuschaos.github.io/litmus/2.0.0/litmus-2.0.0.yaml
-kubectl apply -f https://raw.githubusercontent.com/litmuschaos/litmus/master/mkdocs/docs/2.9.0/litmus-2.9.0.yaml
+
 kubectl apply -f https://raw.githubusercontent.com/litmuschaos/litmus/2.10.0/mkdocs/docs/2.10.0/litmus-2.10.0.yaml
 
 //in namespace
@@ -42,7 +42,13 @@ kubectl get svc -n litmus
 kubectl patch svc litmusportal-frontend-service -p '{"spec": {"type": "LoadBalancer"}}' -n litmus
 
 //Troubleshooting
-kubectl logs subscriber-cd959f546-mwvp2 -n litmus
+kubectl logs <name> -n litmus
+
+//pod fix
+kubectl get configmap -n litmus
+kubectl edit configmap agent-config -n litmus
+kubectl get svc -n litmus -o wide
+//change server ip in notepad with node ip ( ip-<>-internal ) of server by kubectl get pods -n litmus -o wide, port would be same so no change mp
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 

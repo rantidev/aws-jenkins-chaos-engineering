@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "6f95d411-ff2e-4732-8bdc-5264c7620ce3",
+		"name": "aws-litmus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET TOKEN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"litmus\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:32523/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32523",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pod-delete-experiment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTYwNjMwNzcsInJvbGUiOiJhZG1pbiIsInVpZCI6ImRjNTE5Mzk2LTg3ODMtNDJhOS05NzdkLTM4MjU1MTQxNmE3MCIsInVzZXJuYW1lIjoiYWRtaW4ifQ.KbgBCKc37htj9dyp2lz-Dz37rzwSJ4yaVG4KHwlSBtlQ7knEYOfMD_kcVk_ekCk87ZQ13UYK2subqq3BwuhBOQ",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"operationName\":\"createChaosWorkFlow\",\"variables\":{\"ChaosWorkFlowInput\":{\"workflow_manifest\":\"{\\n  \\\"apiVersion\\\": \\\"argoproj.io/v1alpha1\\\",\\n  \\\"kind\\\": \\\"Workflow\\\",\\n  \\\"metadata\\\": {\\n    \\\"name\\\": \\\"workflow-pod-delete-1655976509\\\",\\n    \\\"namespace\\\": \\\"litmus\\\",\\n    \\\"labels\\\": {\\n      \\\"subject\\\": \\\"workflow-pod-delete_litmus\\\"\\n    }\\n  },\\n  \\\"spec\\\": {\\n    \\\"arguments\\\": {\\n      \\\"parameters\\\": [\\n        {\\n          \\\"name\\\": \\\"adminModeNamespace\\\",\\n          \\\"value\\\": \\\"litmus\\\"\\n        }\\n      ]\\n    },\\n    \\\"entrypoint\\\": \\\"custom-chaos\\\",\\n    \\\"securityContext\\\": {\\n      \\\"runAsNonRoot\\\": true,\\n      \\\"runAsUser\\\": 1000\\n    },\\n    \\\"serviceAccountName\\\": \\\"argo-chaos\\\",\\n    \\\"templates\\\": [\\n      {\\n        \\\"name\\\": \\\"custom-chaos\\\",\\n        \\\"steps\\\": [\\n          [\\n            {\\n              \\\"name\\\": \\\"install-chaos-experiments\\\",\\n              \\\"template\\\": \\\"install-chaos-experiments\\\"\\n            }\\n          ],\\n          [\\n            {\\n              \\\"name\\\": \\\"pod-delete\\\",\\n              \\\"template\\\": \\\"pod-delete\\\"\\n            }\\n          ],\\n          [\\n            {\\n              \\\"name\\\": \\\"revert-chaos\\\",\\n              \\\"template\\\": \\\"revert-chaos\\\"\\n            }\\n          ]\\n        ]\\n      },\\n      {\\n        \\\"name\\\": \\\"install-chaos-experiments\\\",\\n        \\\"inputs\\\": {\\n          \\\"artifacts\\\": [\\n            {\\n              \\\"name\\\": \\\"pod-delete\\\",\\n              \\\"path\\\": \\\"/tmp/pod-delete.yaml\\\",\\n              \\\"raw\\\": {\\n                \\\"data\\\": \\\"apiVersion: litmuschaos.io/v1alpha1\\\\ndescription:\\\\n  message: |\\\\n    Deletes a pod belonging to a deployment/statefulset/daemonset\\\\nkind: ChaosExperiment\\\\nmetadata:\\\\n  name: pod-delete\\\\n  labels:\\\\n    name: pod-delete\\\\n    app.kubernetes.io/part-of: litmus\\\\n    app.kubernetes.io/component: chaosexperiment\\\\n    app.kubernetes.io/version: 2.5.0\\\\nspec:\\\\n  definition:\\\\n    scope: Namespaced\\\\n    permissions:\\\\n      - apiGroups:\\\\n          - \\\\\\\"\\\\\\\"\\\\n        resources:\\\\n          - pods\\\\n        verbs:\\\\n          - create\\\\n          - delete\\\\n          - get\\\\n          - list\\\\n          - patch\\\\n          - update\\\\n          - deletecollection\\\\n      - apiGroups:\\\\n          - \\\\\\\"\\\\\\\"\\\\n        resources:\\\\n          - events\\\\n        verbs:\\\\n          - create\\\\n          - get\\\\n          - list\\\\n          - patch\\\\n          - update\\\\n      - apiGroups:\\\\n          - \\\\\\\"\\\\\\\"\\\\n        resources:\\\\n          - configmaps\\\\n        verbs:\\\\n          - get\\\\n          - list\\\\n      - apiGroups:\\\\n          - \\\\\\\"\\\\\\\"\\\\n        resources:\\\\n          - pods/log\\\\n        verbs:\\\\n          - get\\\\n          - list\\\\n          - watch\\\\n      - apiGroups:\\\\n          - \\\\\\\"\\\\\\\"\\\\n        resources:\\\\n          - pods/exec\\\\n        verbs:\\\\n          - get\\\\n          - list\\\\n          - create\\\\n      - apiGroups:\\\\n          - apps\\\\n        resources:\\\\n          - deployments\\\\n          - statefulsets\\\\n          - replicasets\\\\n          - daemonsets\\\\n        verbs:\\\\n          - list\\\\n          - get\\\\n      - apiGroups:\\\\n          - apps.openshift.io\\\\n        resources:\\\\n          - deploymentconfigs\\\\n        verbs:\\\\n          - list\\\\n          - get\\\\n      - apiGroups:\\\\n          - \\\\\\\"\\\\\\\"\\\\n        resources:\\\\n          - replicationcontrollers\\\\n        verbs:\\\\n          - get\\\\n          - list\\\\n      - apiGroups:\\\\n          - argoproj.io\\\\n        resources:\\\\n          - rollouts\\\\n        verbs:\\\\n          - list\\\\n          - get\\\\n      - apiGroups:\\\\n          - batch\\\\n        resources:\\\\n          - jobs\\\\n        verbs:\\\\n          - create\\\\n          - list\\\\n          - get\\\\n          - delete\\\\n          - deletecollection\\\\n      - apiGroups:\\\\n          - litmuschaos.io\\\\n        resources:\\\\n          - chaosengines\\\\n          - chaosexperiments\\\\n          - chaosresults\\\\n        verbs:\\\\n          - create\\\\n          - list\\\\n          - get\\\\n          - patch\\\\n          - update\\\\n          - delete\\\\n    image: litmuschaos/go-runner:2.5.0\\\\n    imagePullPolicy: Always\\\\n    args:\\\\n      - -c\\\\n      - ./experiments -name pod-delete\\\\n    command:\\\\n      - /bin/bash\\\\n    env:\\\\n      - name: TOTAL_CHAOS_DURATION\\\\n        value: \\\\\\\"15\\\\\\\"\\\\n      - name: RAMP_TIME\\\\n        value: \\\\\\\"\\\\\\\"\\\\n      - name: FORCE\\\\n        value: \\\\\\\"true\\\\\\\"\\\\n      - name: CHAOS_INTERVAL\\\\n        value: \\\\\\\"5\\\\\\\"\\\\n      - name: PODS_AFFECTED_PERC\\\\n        value: \\\\\\\"\\\\\\\"\\\\n      - name: LIB\\\\n        value: litmus\\\\n      - name: TARGET_PODS\\\\n        value: \\\\\\\"\\\\\\\"\\\\n      - name: SEQUENCE\\\\n        value: parallel\\\\n    labels:\\\\n      name: pod-delete\\\\n      app.kubernetes.io/part-of: litmus\\\\n      app.kubernetes.io/component: experiment-job\\\\n      app.kubernetes.io/version: 2.5.0\\\\n\\\"\\n              }\\n            }\\n          ]\\n        },\\n        \\\"container\\\": {\\n          \\\"args\\\": [\\n            \\\"kubectl apply -f /tmp/pod-delete.yaml -n {{workflow.parameters.adminModeNamespace}} |  sleep 30\\\"\\n          ],\\n          \\\"command\\\": [\\n            \\\"sh\\\",\\n            \\\"-c\\\"\\n          ],\\n          \\\"image\\\": \\\"litmuschaos/k8s:latest\\\"\\n        }\\n      },\\n      {\\n        \\\"name\\\": \\\"pod-delete\\\",\\n        \\\"inputs\\\": {\\n          \\\"artifacts\\\": [\\n            {\\n              \\\"name\\\": \\\"pod-delete\\\",\\n              \\\"path\\\": \\\"/tmp/chaosengine-pod-delete.yaml\\\",\\n              \\\"raw\\\": {\\n                \\\"data\\\": \\\"apiVersion: litmuschaos.io/v1alpha1\\\\nkind: ChaosEngine\\\\nmetadata:\\\\n  namespace: \\\\\\\"{{workflow.parameters.adminModeNamespace}}\\\\\\\"\\\\n  generateName: pod-delete\\\\n  labels:\\\\n    instance_id: f16ea237-09c0-4606-95b1-81144bf65c42\\\\n    context: pod-delete_litmus\\\\n    workflow_name: workflow-pod-delete-1655976509\\\\nspec:\\\\n  appinfo:\\\\n    appns: default\\\\n    applabel: app=nginx\\\\n    appkind: deployment\\\\n  engineState: active\\\\n  chaosServiceAccount: litmus-admin\\\\n  experiments:\\\\n    - name: pod-delete\\\\n      spec:\\\\n        components:\\\\n          env:\\\\n            - name: TOTAL_CHAOS_DURATION\\\\n              value: \\\\\\\"30\\\\\\\"\\\\n            - name: CHAOS_INTERVAL\\\\n              value: \\\\\\\"10\\\\\\\"\\\\n            - name: FORCE\\\\n              value: \\\\\\\"false\\\\\\\"\\\\n            - name: PODS_AFFECTED_PERC\\\\n              value: \\\\\\\"\\\\\\\"\\\\n        probe: []\\\\n  annotationCheck: \\\\\\\"false\\\\\\\"\\\\n\\\"\\n              }\\n            }\\n          ]\\n        },\\n        \\\"container\\\": {\\n          \\\"args\\\": [\\n            \\\"-file=/tmp/chaosengine-pod-delete.yaml\\\",\\n            \\\"-saveName=/tmp/engine-name\\\"\\n          ],\\n          \\\"image\\\": \\\"litmuschaos/litmus-checker:latest\\\"\\n        }\\n      },\\n      {\\n        \\\"name\\\": \\\"revert-chaos\\\",\\n        \\\"container\\\": {\\n          \\\"image\\\": \\\"litmuschaos/k8s:latest\\\",\\n          \\\"command\\\": [\\n            \\\"sh\\\",\\n            \\\"-c\\\"\\n          ],\\n          \\\"args\\\": [\\n            \\\"kubectl delete chaosengine -l 'instance_id in (f16ea237-09c0-4606-95b1-81144bf65c42, )' -n {{workflow.parameters.adminModeNamespace}} \\\"\\n          ]\\n        }\\n      }\\n    ],\\n    \\\"podGC\\\": {\\n      \\\"strategy\\\": \\\"OnWorkflowCompletion\\\"\\n    }\\n  }\\n}\",\"cronSyntax\":\"\",\"workflow_name\":\"workflow-pod-delete-1655976509\",\"workflow_description\":\"delete nginx pod workflow\",\"isCustomWorkflow\":true,\"weightages\":[{\"experiment_name\":\"pod-delete\",\"weightage\":10}],\"project_id\":\"0ce75b77-67f0-4de0-9a83-3c59074867f9\",\"cluster_id\":\"f1f5dcb4-7596-4ddc-8f6f-3d67019d97f5\"}},\"query\":\"mutation createChaosWorkFlow($ChaosWorkFlowInput: ChaosWorkFlowInput!) {\\n  createChaosWorkFlow(input: $ChaosWorkFlowInput) {\\n    workflow_id\\n    cronSyntax\\n    workflow_name\\n    workflow_description\\n    isCustomWorkflow\\n    __typename\\n  }\\n}\\n\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:32523/api/query",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32523",
+					"path": [
+						"api",
+						"query"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
