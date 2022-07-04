@@ -1,3 +1,29 @@
+//Get the ClusterIP of your CoreDNS service:
+kubectl get service kube-dns -n kube-system
+
+//Verify that then DNS endpoints are exposed and pointing to CoreDNS pods
+kubectl -n kube-system get endpoints kube-dns
+//kube-dns   192.168.2.218:53,192.168.3.117:53,192.168.2.218:53 + 1 more...   90d
+
+//Get the kube-proxy logs
+kubectl logs -n kube-system --selector 'k8s-app=kube-proxy'
+
+kubectl exec -it your-pod-name -- sh
+
+// To verify that the cluster IP of the kube-dns service is in your pod's /etc/resolv.conf, run the following command in the shell inside of the pod:
+cat /etc/resolv.conf
+
+//To verify that your pod can use the default ClusterIP to resolve an internal domain, run the following command in the shell inside the pod
+nslookup kubernetes 10.100.0.10
+
+//To verify that your pod can use the default ClusterIP to resolve an external domain, run the following command in the shell inside the pod
+nslookup amazon.com 10.100.0.10
+
+//Enable the debug log of CoreDNS pods and add the log plugin to the CoreDNS ConfigMap
+kubectl -n kube-system edit configmap coredns
+
+----------------------------------------------------------------------------
+
 //Sample IAM role
 arn:aws:iam::669989449580:role/eksClusterRole2
 arn:aws:iam::669989449580:role/eksWorkerRole2
@@ -11,7 +37,7 @@ aws eks describe-cluster --name c2
 eksctl get iamidentitymapping --cluster c2 --region=us-east-1
 
 //Config aws with newly created eks cluster 
-aws eks --region us-east-1 update-kubeconfig --name c2new
+aws eks --region us-east-1 update-kubeconfig --name chaosLitmus
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
