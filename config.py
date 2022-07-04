@@ -4,6 +4,7 @@ import os
 import json
 import io
 import requests
+
 project = os.environ['ProjectName']
 envi = os.environ['EnvironmentName']
 expt = os.environ['ExperimentName']
@@ -19,6 +20,7 @@ def load_config_file():
     return config_data
   
 data = load_config_file()
+print(data['litmus'])
 print('DATA : ')
 print(data)
 

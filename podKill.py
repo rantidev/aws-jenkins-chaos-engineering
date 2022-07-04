@@ -48,7 +48,7 @@ def execute_pod_kill_experiment():
     response = get_auth_token()
 
     access_token = response.json()['access_token']
-    print(access_token)
+    # print(access_token)
 
     headers = {'authorization': access_token,
                'Content-type': 'application/json'}
