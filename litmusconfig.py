@@ -4,9 +4,9 @@ import os
 import json
 import io
 import requests
-project = os.environ['project_name']
-envi = os.environ['environment_name']
-expt = os.environ['experiment']
+project = os.environ['ProjectName']
+envi = os.environ['EnvironmentName']
+expt = os.environ['ExperimentName']
 
 def read_config_file():
     json_config_path = os.path.join(sys.path[0], project + "/config_"  + envi + ".json")
@@ -18,7 +18,7 @@ def load_config_file():
     config_data = json.load(file)
     return config_data
   
-data=load_config_file()
+data = load_config_file()
 print('DATA : ')
 print(data)
 

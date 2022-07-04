@@ -53,6 +53,3 @@ response = requests.get(url = URL2)
 # print(response.json())
 
 #########################################################################################################
-data = json.loads('payload.json')
-
-print(data)
