@@ -50,4 +50,9 @@ URL2 = BASE_URL + "lat=" + lat + "&lon=" + lon + "&appid=" + API_KEY
 print(URL2)
 
 response = requests.get(url = URL2)
-print(response.json())
+# print(response.json())
+
+#########################################################################################################
+data = json.loads('payload.json')
+
+print(data)

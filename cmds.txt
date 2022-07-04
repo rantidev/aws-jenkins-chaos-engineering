@@ -50,6 +50,8 @@ kubectl describe pod <pod-name>
 
 kubectl delete deployment nginx-deployment
 
+mkubectl get pods --selector=app=nginx
+
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 //Install litmus chaos with kubectl
