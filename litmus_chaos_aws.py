@@ -33,6 +33,8 @@ def get_auth_token():
 ############################################################################################################
 def get_cluster_id():
     response = get_auth_token()
+    print('RESPONSE : ' , response)
+    
     access_token = response.json()['access_token']
 
     headers = {'authorization': access_token, 'Content-type': 'application/json'}

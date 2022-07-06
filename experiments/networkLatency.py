@@ -4,12 +4,12 @@ import json
 import requests
 import random
 
-LITMUS_URL = 'http://a0cec0471be1f4a72a704107aafef009-1177770021.us-east-1.elb.amazonaws.com:9091'
+LITMUS_URL = "http://a2091c8bc0c124b64bc8c15b365a232f-1134329632.us-east-1.elb.amazonaws.com:9091"
 LITMUS_USERNAME = 'admin'
 LITMUS_PASSWORD = 'litmus'
-LITMUS_PROJECT_ID = 'acc81825-c526-47de-af04-8b8cf8547244'
+LITMUS_PROJECT_ID = '6550935e-fb59-4507-816c-a6ff5750b4bf'
 # acc81825-c526-47de-af04-8b8cf8547244
-LITMUS_CLUSTER_ID = '3eb02947-4acf-49e1-ae69-e8a5ce9e9149'
+LITMUS_CLUSTER_ID = '4ceada93-5279-47da-b5bb-36951f3f1c4d'
 # 3eb02947-4acf-49e1-ae69-e8a5ce9e9149
 NETWORK_LATENCY_NAMESPACE = 'default'
 NETWORK_LATENCY_DEPLOYMENT = 'nginx-deployment'
@@ -50,7 +50,7 @@ def execute_pod_kill_experiment():
     response = get_auth_token()
 
     access_token = response.json()['access_token']
-    # print(access_token)
+    print(access_token)
 
     headers = {'authorization': access_token,
                'Content-type': 'application/json'}
@@ -84,8 +84,8 @@ def get_pod_kill_request_body(workflow_name, namespace, deployment):
                         "weightage": 10
                     }
                 ],
-                "projectID": "acc81825-c526-47de-af04-8b8cf8547244",
-                "clusterID": "3eb02947-4acf-49e1-ae69-e8a5ce9e9149"
+                "projectID": 'updated_project_id',
+                "clusterID": 'updated_cluster_id'
             }
         },
         "query": "mutation createChaosWorkFlow($request: ChaosWorkFlowRequest!) {\n  createChaosWorkFlow(request: $request) {\n    workflowID\n    cronSyntax\n    workflowName\n    workflowDescription\n    isCustomWorkflow\n    __typename\n  }\n}\n"
