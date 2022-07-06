@@ -233,14 +233,18 @@ def read_config_file():
 if __name__ == '__main__':
 
     config_data_res = load_config_file()
-    print(config_data_res)
-
     litmus_config = config_data_res['litmus']
     LITMUS_URL = litmus_config['litmus_url']
     LITMUS_USERNAME = os.environ('litmus_username')
     LITMUS_PASSWORD = os.environ('litmus_password')
     experiment_type = os.environ('experiment_type')
     LITMUS_PROJECT_ID = litmus_config['litmus_project_id']
+    print(litmus_config)
+    print(LITMUS_URL)
+    print(LITMUS_USERNAME)
+    print(LITMUS_PASSWORD)
+    print(experiment_type)
+    print(LITMUS_PROJECT_ID)
     LITMUS_CLUSTER_ID = get_cluster_id()
     
 
