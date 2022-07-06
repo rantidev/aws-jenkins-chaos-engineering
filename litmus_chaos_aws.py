@@ -95,8 +95,8 @@ def get_pod_kill_request_body(workflow_name, namespace, deployment):
                       "weightage": 10
                   }
               ],
-              'projectId': 'updated_project_id',
-              'clusterId': 'updated_cluster_id',
+              'projectID': 'updated_project_id',
+              'clusterID': 'updated_cluster_id',
           }
       },
       "query": "mutation createChaosWorkFlow($request: ChaosWorkFlowRequest!) {\n  createChaosWorkFlow(request: $request) {\n    workflowID\n    cronSyntax\n    workflowName\n    workflowDescription\n    isCustomWorkflow\n    __typename\n  }\n}\n"
@@ -142,8 +142,8 @@ def get_network_latency_experiment_body(workflow_name, namespace, deployment):
                         "weightage": 10
                     }
                 ],
-                'projectId': 'updated_project_id',
-                'clusterId': 'updated_cluster_id',
+                'projectID': 'updated_project_id',
+                'clusterID': 'updated_cluster_id',
             }
         },
         "query": "mutation createChaosWorkFlow($request: ChaosWorkFlowRequest!) {\n  createChaosWorkFlow(request: $request) {\n    workflowID\n    cronSyntax\n    workflowName\n    workflowDescription\n    isCustomWorkflow\n    __typename\n  }\n}\n"
@@ -240,7 +240,6 @@ if __name__ == '__main__':
     experiment_type = os.environ['experiment_type']
     LITMUS_PROJECT_ID = litmus_config['litmus_project_id']
     print(litmus_config)
-    print(LITMUS_URL)
     print(LITMUS_USERNAME)
     print(LITMUS_PASSWORD)
     print(experiment_type)
