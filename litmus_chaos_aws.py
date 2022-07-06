@@ -221,8 +221,8 @@ def load_config_file():
 
 #############################################################################################################
 def read_config_file():
-    env = os.environ['DEPLOYMENT_ENV']
-    project = os.environ['Project']
+    env = os.getenv['DEPLOYMENT_ENV']
+    project = os.getenv['Project']
     json_config_path = os.path.join(sys.path[0], project + "/" + "config_" + env + ".json")
     return json_config_path
 
@@ -235,11 +235,12 @@ if __name__ == '__main__':
 
     litmus_config = config_data_res['litmus']
     LITMUS_URL = litmus_config['litmus_url']
+    LITMUS_USERNAME = os.getenv('litmus_username')
+    LITMUS_PASSWORD = os.getenv('litmus_password')
+    experiment_type = os.getenv('experiment_type')
     LITMUS_PROJECT_ID = litmus_config['litmus_project_id']
     LITMUS_CLUSTER_ID = get_cluster_id()
-    LITMUS_USERNAME = os.environ('litmus_username')
-    LITMUS_PASSWORD = os.environ('litmus_password')
-    experiment_type = os.environ('experiment_type')
+    
 
     print("Selected Experiment Type :" + experiment_type)
 
