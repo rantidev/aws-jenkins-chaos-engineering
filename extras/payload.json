@@ -1,3 +1,13 @@
+GET_CLUSTER
+
+{
+   "operationName": "listClusters",
+   "variables": {
+     "projectID": "6550935e-fb59-4507-816c-a6ff5750b4bf"
+   },
+   "query": "query listClusters($projectID: String!) {\n  listClusters(projectID: $projectID) {\n    clusterID\n    __typename\n  }\n}\n"
+ }
+
 NETWORK-LATENCY
 
 {

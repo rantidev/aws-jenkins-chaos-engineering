@@ -1,17 +1,23 @@
 {
     "litmus":{
-        "litmus_url":"http://a5f63721fd82f419e86e4f8c29d96e5a-1578053227.us-east-1.elb.amazonaws.com:9091/",
-        "litmus_project_id":"b0ee966d-3345-4b24-a929-bad4b28964b9",
+        "litmus_url":"http://a2091c8bc0c124b64bc8c15b365a232f-1134329632.us-east-1.elb.amazonaws.com:9091",
+        "litmus_project_id":"6550935e-fb59-4507-816c-a6ff5750b4bf",
         "env": "dev"
     },
     "pod_delete":{
-        "eks_ns":"nginx",
+        "eks_ns":"default",
         "eks_pod":"nginx",
         "env": "dev"
     },
     "pod_nw_slowness":{
-        "eks_ns":"nginx",
+        "eks_ns":"default",
         "eks_pod":"nginx",
         "env": "dev"
+    },
+    "mongo_atlas":{
+        "pub_key": "bubkulas",
+        "private_key": "04e1505b-c853-4dae-b287-54c9b6d0547c",
+        "env": "dev",
+        "atlas_url": "https://cloud.mongodb.com/api/atlas/v1.5/groups/62c3df3a3040521a8c7cee77/clusters/atlas-techx-ota-dev/restartPrimaries?pretty=true"
     }
 }

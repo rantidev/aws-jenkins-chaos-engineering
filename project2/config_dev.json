@@ -1,17 +1,23 @@
 {
     "litmus":{
-        "litmus_url":"http://a5f63721fd82f419e86e4f8c29d96e5a-1578053227.us-east-1.elb.amazonaws.com:9091/",
-        "litmus_project_id":"b0ee966d-3345-4b24-a929-bad4b28964b9",
+        "litmus_url":"https://litmus-dev.np.aella.tech",
+        "litmus_project_id":"",
         "env": "dev"
     },
     "pod_delete":{
-        "eks_ns":"nginx",
-        "eks_pod":"nginx",
+        "eks_ns":" ",
+        "eks_pod":" ",
         "env": "dev"
     },
     "pod_nw_slowness":{
-        "eks_ns":"nginx",
-        "eks_pod":"nginx",
+        "eks_ns":" ",
+        "eks_pod":" ",
         "env": "dev"
+    },
+    "mongo_atlas":{
+        "pub_key": "yivksaoz",
+        "private_key": "49e54d1c-523e-4191-b593-da7ba4e0714c",
+        "env": "dev",
+        "atlas_url":""
     }
 }

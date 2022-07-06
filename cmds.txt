@@ -37,7 +37,7 @@ aws eks describe-cluster --name c2
 eksctl get iamidentitymapping --cluster c2 --region=us-east-1
 
 //Config aws with newly created eks cluster 
-aws eks --region us-east-1 update-kubeconfig --name chaosLitmus
+aws eks --region us-east-1 update-kubeconfig --name july6
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ kubectl logs <name> -n litmus
 //pod fix
 kubectl get configmap -n litmus
 kubectl edit configmap agent-config -n litmus
-kubectl get svc -n litmus -o wide
+kubectl get pods -n litmus -o wide
 //change server ip in notepad with node ip ( ip-<>-internal ) of server by kubectl get pods -n litmus -o wide, port would be same so no change mp
 
 ------------------------------------------------------------------------------------------------------------------------------------------
