@@ -1,4 +1,0 @@
-curl --user "xqwkthys:0c38aa45-765a-46d7-9778-7d40c2234858" --digest \
---header "Content-Type: application/json" \
---include \
---request POST "https://cloud.mongodb.com/api/atlas/v1.5/groups/62c3df3a3040521a8c7cee77/clusters/Project0/restartPrimaries?pretty=true"
