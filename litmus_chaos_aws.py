@@ -34,7 +34,7 @@ def get_auth_token():
 def get_cluster_id():
     response = get_auth_token()
     print('RESPONSE : ' , response)
-    
+
     access_token = response.json()['access_token']
 
     headers = {'authorization': access_token, 'Content-type': 'application/json'}
@@ -237,9 +237,9 @@ if __name__ == '__main__':
     LITMUS_URL = litmus_config['litmus_url']
     LITMUS_PROJECT_ID = litmus_config['litmus_project_id']
     LITMUS_CLUSTER_ID = get_cluster_id()
-    LITMUS_USERNAME = os.getenv('litmus_username')
-    LITMUS_PASSWORD = os.getenv('litmus_password')
-    experiment_type = os.getenv('experiment_type')
+    LITMUS_USERNAME = os.environ('litmus_username')
+    LITMUS_PASSWORD = os.environ('litmus_password')
+    experiment_type = os.environ('experiment_type')
 
     print("Selected Experiment Type :" + experiment_type)
 
