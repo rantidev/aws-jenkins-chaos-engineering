@@ -206,7 +206,7 @@ def terminate_mongo_atlas_instance():
     if response.status_code == 200:
         experiment_status = 'Succeeded'
     
-    print(experiment_status: 'experiment_status')
+    print('experiment_status :' , experiment_status)
 
 #############################################################################################################
 def get_random_number():
