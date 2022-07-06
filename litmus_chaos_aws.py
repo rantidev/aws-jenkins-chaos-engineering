@@ -202,6 +202,7 @@ def terminate_mongo_atlas_instance():
     response = requests.post(
         mongodb_atlas_url
         , auth=HTTPDigestAuth(pub_key, private_key))
+    print(response)
 
     if response.status_code == 200:
         experiment_status = 'Succeeded'
