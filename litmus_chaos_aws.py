@@ -239,12 +239,14 @@ if __name__ == '__main__':
     LITMUS_PASSWORD = os.environ['litmus_password']
     experiment_type = os.environ['experiment_type']
     LITMUS_PROJECT_ID = litmus_config['litmus_project_id']
+    LITMUS_CLUSTER_ID = get_cluster_id()
+
     print(litmus_config)
     print(LITMUS_USERNAME)
     print(LITMUS_PASSWORD)
     print(experiment_type)
     print(LITMUS_PROJECT_ID)
-    LITMUS_CLUSTER_ID = get_cluster_id()
+    print(LITMUS_CLUSTER_ID)
     
 
     print("Selected Experiment Type :" + experiment_type)
