@@ -1,3 +1,9 @@
+//create main.tf and providers.tf files and configure the aws client with access key and secret key.
+terraform init 
+terraform plan
+terraform apply
+
+-----------------------------------------------------------------------------------------------------------
 //Get the ClusterIP of your CoreDNS service:
 kubectl get service kube-dns -n kube-system
 
