@@ -1,0 +1,4 @@
+"redis_replication_groupId": "techx-ota-redis-dev-cache-redis",
+"redis_node_groupId": "0001",
+
+// Change the vpc id's and subnet id's

@@ -1,0 +1,39 @@
+resource "aws_s3_bucket" "msk_logs" {
+  bucket = "ps-msk-bucket-july7"
+
+  tags = {
+    Name        = "msk bucket"
+    Environment = "test"
+  }
+}
+
+module "msk-cluster" {
+  source  = "angelabad/msk-cluster/aws"
+
+  cluster_name    = "kafka"
+  instance_type   = "kafka.t3.small"
+  number_of_nodes = 2
+  client_subnets  = ["subnet-01e6b65199cb06fb7","subnet-04be9bd54b51fb120"]
+  kafka_version   = "2.6.2"
+
+
+  enhanced_monitoring = "PER_BROKER"
+
+  s3_logs_bucket = aws_s3_bucket.msk_logs.id
+  s3_logs_prefix = "msklogs"
+
+  prometheus_jmx_exporter  = true
+  prometheus_node_exporter = true
+
+  server_properties = {
+    "auto.create.topics.enable"  = "true"
+    "default.replication.factor" = "2"
+  }
+
+  encryption_in_transit_client_broker = "TLS"
+
+  tags = {
+    Owner       = "Sapient"
+    Environment = "test"
+  }
+}

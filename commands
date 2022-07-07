@@ -1,4 +1,5 @@
-//create main.tf and providers.tf files and configure the aws client with access key and secret key.
+//create main.tf and providers.tf files and configure the aws client with access key and secret key
+// Change the vpc id's and subnet id's of .tf files
 terraform init 
 terraform plan
 terraform apply
@@ -105,8 +106,6 @@ chmod +x max-pods-calculator.sh
 ./max-pods-calculator.sh --instance-type m5.large --cni-version 1.9.0-eksbuild.1
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-
-git clone https://github.com/imkaran23/aws-jenkins-CI-CD.git
 
 //install plugins on jenkins and add Credentials for dockerhub 
 
