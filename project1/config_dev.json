@@ -1,7 +1,7 @@
 {
     "litmus":{
-        "litmus_url":"http://afeea726f04a249b298ab25b936f3d40-1610190753.us-east-1.elb.amazonaws.com:9091",
-        "litmus_project_id":"dddcfbb6-7d64-4f4e-ba4b-e2351e205f3a",
+        "litmus_url":"http://ae2b5a05fec754c5796f62282699b149-242792175.us-east-1.elb.amazonaws.com:9091",
+        "litmus_project_id":"8ae68704-5a44-47ff-9cfc-92a08a1ffa0e",
         "env": "dev"
     },
     "pod_delete":{
@@ -15,9 +15,22 @@
         "env": "dev"
     },
     "mongo_atlas":{
-        "pub_key": "xqwkthys",
+        "public_key": "xqwkthys",
         "private_key": "0c38aa45-765a-46d7-9778-7d40c2234858",
         "env": "dev",
         "atlas_url": "https://cloud.mongodb.com/api/atlas/v1.5/groups/62c3df3a3040521a8c7cee77/clusters/Cluster0/restartPrimaries?pretty=true"
+    },
+    "kafka":{
+        "kafka_aws_region": "us-east-1",
+        "kafka_cluster_arn": "arn:aws:kafka:us-east-1:669989449580:cluster/kafka/37746071-df88-4e3f-bf36-462513f0730f-22",
+        "aws_access_key_id": "AKIAZX7T3V5WIXPPAKUA",
+        "aws_secret_access_key": "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",
+    },
+    "redis":{
+        "redis_node_groupId": "001",
+        "redis_replication_groupId": "choas-demo-redis",
+        "redis_aws_region": "us-east-1",
+        "aws_access_key_id": "AKIAZX7T3V5WIXPPAKUA",
+        "aws_secret_access_key": "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",
     }
 }

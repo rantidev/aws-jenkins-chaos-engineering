@@ -1,0 +1,13 @@
+terraform {
+  required_providers {
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+      version = "1.4.1"
+    }
+  }
+}
+
+provider "mongodbatlas" {
+  public_key = "xqwkthys"
+  private_key  = "0c38aa45-765a-46d7-9778-7d40c2234858"
+}
