@@ -1,3 +1,8 @@
+CLOUDBURNER-SUPPORT@publicissapient.com
+karkaran1@publicisgroupe.net
+
+-----------------------------------------------------------------------------------------------------------------
+
 //create main.tf and providers.tf files and configure the aws client with access key and secret key
 // Change the vpc id's and subnet id's of .tf files
 terraform init 

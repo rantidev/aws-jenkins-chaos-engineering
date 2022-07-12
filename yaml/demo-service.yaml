@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoservice
+  labels:
+    app: demoservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoservice
+  template:
+    metadata:
+      labels:
+        app: demoservice
+    spec:
+      containers:
+        - name: demoservice
+          image: rantidev7/demo-service:5.0.0
+          ports:
+            - containerPort: 8080
+          env:
+           - name: MONGO_URI
+             value: "mongodb+srv://demo-user:demo$123@cluster0.0uuhv.mongodb.net/demo?retryWrites=true&w=majority"
+
+          imagePullPolicy: Always

@@ -4,32 +4,32 @@ import json
 import requests
 import random
 
-LITMUS_URL = "http://a2091c8bc0c124b64bc8c15b365a232f-1134329632.us-east-1.elb.amazonaws.com:9091"
+LITMUS_URL = "http://ae2b5a05fec754c5796f62282699b149-242792175.us-east-1.elb.amazonaws.com:9091"
 LITMUS_USERNAME = 'admin'
 LITMUS_PASSWORD = 'litmus'
-LITMUS_PROJECT_ID = '6550935e-fb59-4507-816c-a6ff5750b4bf'
-# acc81825-c526-47de-af04-8b8cf8547244
-LITMUS_CLUSTER_ID = '4ceada93-5279-47da-b5bb-36951f3f1c4d'
-# 3eb02947-4acf-49e1-ae69-e8a5ce9e9149
+LITMUS_PROJECT_ID = '8ae68704-5a44-47ff-9cfc-92a08a1ffa0e'
+LITMUS_CLUSTER_ID = ''
 NETWORK_LATENCY_NAMESPACE = 'default'
 NETWORK_LATENCY_DEPLOYMENT = 'nginx-deployment'
 
-# def get_cluster_id():
-#     response = get_auth_token()
-#     access_token = response.json()['access_token']
+def get_cluster_id():
+    response = get_auth_token()
+    print('RESPONSE : ' , response)
 
-#     headers = {'authorization': access_token, 'Content-type': 'application/json'}
-#     data = {
-#         "operationName": "getClusters",
-#         "variables": {
-#             "project_id": LITMUS_PROJECT_ID
-#         },
-#         "query": "query getClusters($project_id: String!, $cluster_type: String) {\n  getCluster(project_id: $project_id, cluster_type: $cluster_type) {\n    cluster_id\n    cluster_name\n    description\n    is_active\n    is_registered\n    is_cluster_confirmed\n    updated_at\n    created_at\n    cluster_type\n    no_of_schedules\n    no_of_workflows\n    token\n    last_workflow_timestamp\n    agent_namespace\n    agent_scope\n    version\n    __typename\n  }\n}\n"
-#     }
-#     response = requests.post(LITMUS_URL + '/api/query', data=json.dumps(data), headers=headers)
-#     return response
-#     cluster_id = response.json()['data']['getCluster'][0]['cluster_id']
-#     return cluster_id
+    access_token = response.json()['access_token']
+
+    headers = {'authorization': access_token, 'Content-type': 'application/json'}
+    data = {
+      "operationName": "listClusters",
+      "variables": {
+        "projectID": LITMUS_PROJECT_ID
+      },
+      "query": "query listClusters($projectID: String!) {\n  listClusters(projectID: $projectID) {\n    clusterID\n    __typename\n  }\n}\n"
+    }
+    
+    response = requests.post(LITMUS_URL + '/api/query', data=json.dumps(data), headers=headers)
+    cluster_id = response.json()['data']['listClusters'][0]['clusterID']
+    return cluster_id
 
 def get_auth_token():
     cred_data = {'username': LITMUS_USERNAME,
@@ -110,5 +110,6 @@ def get_pod_kill_request_body(workflow_name, namespace, deployment):
 
 #######################################################
 if __name__ == '__main__':
+    LITMUS_CLUSTER_ID = get_cluster_id()
     execute_pod_kill_experiment()
     # print (get_cluster_id());
