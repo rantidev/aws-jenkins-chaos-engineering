@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "80adac1e-b2bb-4a71-9ca0-5afabe498f49",
+		"name": "Demo-service-confi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{aws-host}}:{{loadbalancer-port}}/api/v1/users",
+					"host": [
+						"{{aws-host}}"
+					],
+					"port": "{{loadbalancer-port}}",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{aws-host}}:{{loadbalancer-port}}/api/v1/62c40affd1c4e21112745314",
+					"host": [
+						"{{aws-host}}"
+					],
+					"port": "{{loadbalancer-port}}",
+					"path": [
+						"api",
+						"v1",
+						"62c40affd1c4e21112745314"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"rantidev singh2\",\n        \"username\": \"ransingh7\",\n        \"email\": \"ransingh7@publicisgroupe.net\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aws-host}}:{{loadbalancer-port}}/api/v1/users/62c40a89b0ee322da59cccfb",
+					"host": [
+						"{{aws-host}}"
+					],
+					"port": "{{loadbalancer-port}}",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"62c40a89b0ee322da59cccfb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cretaeUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test106\",\n    \"username\": \"test106\",\n    \"email\": \"test106@publicisgroupe.net\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aws-host}}:{{loadbalancer-port}}/api/v1/users",
+					"host": [
+						"{{aws-host}}"
+					],
+					"port": "{{loadbalancer-port}}",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{aws-host}}:{{loadbalancer-port}}/api/v1/users/62cc088fa30a685da2c86893",
+					"host": [
+						"{{aws-host}}"
+					],
+					"port": "{{loadbalancer-port}}",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"62cc088fa30a685da2c86893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cached messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http:/{{aws-host}}:{{loadbalancer-port}}/api/v1/cache",
+					"host": [
+						"http"
+					],
+					"port": "",
+					"path": [
+						"{{aws-host}}:{{loadbalancer-port}}",
+						"api",
+						"v1",
+						"cache"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "publish message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/publish/how are you doing",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"publish",
+						"how are you doing"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "aws-host",
+			"value": "aeb7e27dba1794a649d288ca5a8b34af-1373447459.us-east-1.elb.amazonaws.com"
+		},
+		{
+			"key": "loadbalancer-port",
+			"value": "8080"
+		}
+	]
+}

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoservice
+  labels:
+    app: demoservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demoservice
+  template:
+    metadata:
+      labels:
+        app: demoservice
+    spec:
+      containers:
+        - name: demoservice
+          image: rantidev7/demo-service:6.1.0
+          ports:
+            - containerPort: 8080
+          env:
+           - name: MONGO_URI
+             value: "mongodb+srv://demo-user:demo$123@cluster0.0uuhv.mongodb.net/demo?retryWrites=true&w=majority"
+           - name: REDIS_HOST
+             value: "chaos-demo-redis.asqktm.ng.0001.use1.cache.amazonaws.com"
+           - name: REDIS_PORT
+             value: "6379"
+           - name: KAFKA_BOOTSTRAP_SERVER
+             value: "b-1.kafka.6hbw8u.c22.kafka.us-east-1.amazonaws.com:9092,b-2.kafka.6hbw8u.c22.kafka.us-east-1.amazonaws.com:9092"
+          imagePullPolicy: Always

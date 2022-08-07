@@ -1,17 +1,25 @@
 {
     "litmus":{
-        "litmus_url":"http://ae2b5a05fec754c5796f62282699b149-242792175.us-east-1.elb.amazonaws.com:9091",
-        "litmus_project_id":"8ae68704-5a44-47ff-9cfc-92a08a1ffa0e",
+        "litmus_url":"http://ad77dcd80c2a4410f91b3ffcce295803-1787595133.us-east-1.elb.amazonaws.com:9091",
+        "litmus_project_id":"34bdf075-6c89-4ada-873c-860d25a1e59b",
+        "username" : "admin",
+        "password" : "litmus",
         "env": "dev"
     },
     "pod_delete":{
         "eks_ns":"default",
-        "eks_pod":"nginx",
+        "eks_pod":"demoservice",
+        "total_chaos_duration" : "120",
+        "chaos_interval" : "30",
+        "pods_affected_percentage" : "100",
         "env": "dev"
     },
     "pod_nw_slowness":{
         "eks_ns":"default",
-        "eks_pod":"nginx",
+        "eks_pod":"demoservice",
+        "total_chaos_duration" : "120",
+        "latency" : "2000",
+        "pods_affected_percentage" : "100",
         "env": "dev"
     },
     "mongo_atlas":{
@@ -21,16 +29,18 @@
         "atlas_url": "https://cloud.mongodb.com/api/atlas/v1.5/groups/62c3df3a3040521a8c7cee77/clusters/Cluster0/restartPrimaries?pretty=true"
     },
     "kafka":{
+        "env": "dev",
         "kafka_aws_region": "us-east-1",
-        "kafka_cluster_arn": "arn:aws:kafka:us-east-1:669989449580:cluster/kafka/37746071-df88-4e3f-bf36-462513f0730f-22",
-        "aws_access_key_id": "",
-        "aws_secret_access_key": ""
+        "kafka_cluster_arn" : "arn:aws:kafka:us-east-1:669989449580:cluster/kafka/36cff62b-a100-45a9-a49e-2426a74c5327-22",
+        "aws_access_key_id": "AKIAZX7T3V5WBW63NNH5",
+        "aws_secret_access_key": "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"
     },
     "redis":{
-        "redis_node_groupId": "001",
-        "redis_replication_groupId": "choas-demo-redis",
+        "env": "dev",
+        "redis_node_groupId": "0001",
+        "redis_replication_groupId": "chaos-demo-redis",
         "redis_aws_region": "us-east-1",
-        "aws_access_key_id": "",
-        "aws_secret_access_key": ""
+        "aws_access_key_id": "AKIAZX7T3V5WBW63NNH5",
+        "aws_secret_access_key": "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"
     }
 }

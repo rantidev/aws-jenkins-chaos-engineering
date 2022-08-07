@@ -1,3 +1,5 @@
+time='2022-07-18T04:20:29Z' level=info msg='[skip]: skipping the job deletion as jobCleanUpPolicy is set to {retain}'
+
 curl --user "xqwkthys:0c38aa45-765a-46d7-9778-7d40c2234858" --digest \
 --header "Content-Type: application/json" \
 --include \

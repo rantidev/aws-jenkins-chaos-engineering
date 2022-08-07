@@ -1,5 +1,30 @@
+kubectl scale  --replicas=2 deployment/demoservice 
+
+// Setup to-do
+update env params for demo-service
+
+add plaintext for kafka
+add security tcp all for kafka
+
+allow all tcp and all ports for redis
+
+// Get inside pod
+kubectl exec -it <pod-name> -- sh
+
+// Check connection from node group ec2 in eks to other clusters like kafka and redis
+nc -zv <b-2.kafka.tzqvpp.c22.kafka.us-east-1.amazonaws.com / public endpoint> <9092 / port-number>
+nc -zv b-2.kafka.tzqvpp.c22.kafka.us-east-1.amazonaws.com 9094
+
+// Find node group id
+aws elasticache describe-replication-groups
+
+---------------------------------------------------------------------------------------------------------------
+kafka.m5.large
+
+//Gatling run command inside the script gatlingChaos
+./gradlew gatlingRun -DNO_OF_USERS=50 -DTPS1=10 -DDURATION=180]
+
 CLOUDBURNER-SUPPORT@publicissapient.com
-karkaran1@publicisgroupe.net
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -49,7 +74,7 @@ aws eks describe-cluster --name c2
 eksctl get iamidentitymapping --cluster c2 --region=us-east-1
 
 //Config aws with newly created eks cluster 
-aws eks --region us-east-1 update-kubeconfig --name july8
+aws eks --region us-east-1 update-kubeconfig --name demo
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
