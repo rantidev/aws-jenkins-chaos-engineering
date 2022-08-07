@@ -25,8 +25,8 @@
     "kafka":{
         "kafka_aws_region": "us-east-1",
         "kafka_cluster_arn": "arn:aws:kafka:us-east-1:669989449580:cluster/kafka/37746071-df88-4e3f-bf36-462513f0730f-22",
-        "aws_access_key_id": "AKIAZX7T3V5WBW63NNH5",
-        "aws_secret_access_key": "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",
+        "aws_access_key_id": "",
+        "aws_secret_access_key": "",
         "env" : "qa"
     },
     "redis":{
@@ -34,7 +34,7 @@
         "redis_node_groupId": "0001",
         "redis_replication_groupId": "choas-demo-redis",
         "redis_aws_region": "us-east-1",
-        "aws_access_key_id": "AKIAZX7T3V5WBW63NNH5",
-        "aws_secret_access_key": "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"
+        "aws_access_key_id": "",
+        "aws_secret_access_key": ""
     }
 }

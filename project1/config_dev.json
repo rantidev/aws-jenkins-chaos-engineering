@@ -32,15 +32,15 @@
         "env": "dev",
         "kafka_aws_region": "us-east-1",
         "kafka_cluster_arn" : "arn:aws:kafka:us-east-1:669989449580:cluster/kafka/36cff62b-a100-45a9-a49e-2426a74c5327-22",
-        "aws_access_key_id": "AKIAZX7T3V5WBW63NNH5",
-        "aws_secret_access_key": "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"
+        "aws_access_key_id": "",
+        "aws_secret_access_key": ""
     },
     "redis":{
         "env": "dev",
         "redis_node_groupId": "0001",
         "redis_replication_groupId": "chaos-demo-redis",
         "redis_aws_region": "us-east-1",
-        "aws_access_key_id": "AKIAZX7T3V5WBW63NNH5",
-        "aws_secret_access_key": "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"
+        "aws_access_key_id": "",
+        "aws_secret_access_key": ""
     }
 }
